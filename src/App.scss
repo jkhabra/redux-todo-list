@@ -1,0 +1,33 @@
+@import "src/scss/lib";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "jakarta sans";
+  font-style: normal;
+
+  button {
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    background: $color-button-bg;
+    color: $color-button-primary;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: unset;
+    }
+  }
+
+  .App {
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+  }
+}
