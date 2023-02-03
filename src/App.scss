@@ -12,12 +12,13 @@ body {
 
   button {
     border: 1px solid $border-color;
-    border-radius: 10px;
+    border-radius: 5px;
     background: $color-button-bg;
     color: $color-button-primary;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 1em;
+    padding: 5px 10px;
+
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
