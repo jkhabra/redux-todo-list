@@ -1,4 +1,4 @@
-# Search Nominatim
+# Redux Todo List
 
 This app is a Todo web application where the user can add/remove `Todo` item.
 
@@ -24,7 +24,9 @@ Follow this guide to setup an environment for developing this app
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [React Redux](https://react-redux.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Scss](https://www.npmjs.com/package/sass)
 
 ## Screenshot
+![image](https://user-images.githubusercontent.com/22749805/216663070-f9a427a2-8136-43a3-b784-f62bafe66144.png)
 
