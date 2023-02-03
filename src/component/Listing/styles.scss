@@ -1,0 +1,48 @@
+@import "src/scss/lib";
+
+.todo-list {
+  margin-top: 2em;
+  padding: 1em 0;
+
+  .todo {
+    display: flex;
+    column-gap: 5px;
+    padding: 5px;
+    justify-content: space-between;
+    min-height: 3em;
+    border: 1px solid $color-input-border;
+    border-radius: 3px;
+    margin-bottom: 2px;
+    align-items: center;
+
+    span {
+      @extend %handle-text-overflow;
+    }
+    .todo-buttons {
+      display: flex;
+
+      .done {
+        background: gray;
+      }
+      .del{
+        background: #e13e3e;
+      }
+      button {
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.no-item {
+  display: flex;
+  border: 1px solid $color-input-border;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 5em;
+}

@@ -9,12 +9,10 @@ export interface TodoItenProp {
 
 export interface TodoProps {
   todoList: TodoItenProp[];
-  count: number;
 }
 
 const initialState: TodoProps = {
   todoList: [],
-  count: 0,
 };
 
 const todoReducer = createSlice({
@@ -22,7 +20,6 @@ const todoReducer = createSlice({
   initialState: initialState,
   reducers: {
     addTask: (state, action) => {
-      console.log("---pay--", action, state);
       const newTask: TodoItenProp = {
         id: Math.random(),
         isDone: false,
@@ -31,18 +28,10 @@ const todoReducer = createSlice({
       state.todoList = [...state.todoList, newTask];
     },
     updateTask: (state, action) => {
-      const findItem = state.todoList.find(
-        (item) => item.id === action.payload.id
+      const updateTodo = state.todoList.map((item) =>
+        item.id === action.payload.id ? { ...item, isDone: !item.isDone } : item
       );
-      const filtered = state.todoList.filter(
-        (item) => item.id !== action.payload.id
-      );
-      if (findItem) {
-        state.todoList = [
-          ...filtered,
-          { ...findItem, isDone: !findItem.isDone },
-        ];
-      }
+      state.todoList = updateTodo;
     },
     deleteTask: (state, action) => {
       const filtered = state.todoList.filter(

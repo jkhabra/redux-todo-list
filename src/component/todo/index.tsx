@@ -1,25 +1,23 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import {
-  addTask,
-  updateTask,
-  deleteTask,
-  TodoProps,
-  TodoItenProp,
-} from "../../redux/reducers/todoReducer";
+import { addTask } from "../../redux/reducers/todoReducer";
+import Listing from "../Listing";
 import "./styles.scss";
 
-const Header = (p: {
-  title?: string;
-  setText: Function;
-  text: string;
-}) => {
+const Header = (p: { title?: string; setText: Function; text: string }) => {
   const dispatch = useDispatch();
 
   const addTodo = () => {
     const task = p.text.trim();
     if (task) {
+      dispatch(addTask({ text: p.text || "" }));
+      p.setText("");
+    }
+  };
+
+  const handleEnterPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
       dispatch(addTask({ text: p.text || "" }));
       p.setText("");
     }
@@ -33,6 +31,7 @@ const Header = (p: {
         placeholder="Add new item"
         value={p.text}
         onChange={(e) => p.setText(e.target.value)}
+        onKeyDown={handleEnterPress}
       />
       <button onClick={addTodo}>Add</button>
     </div>
@@ -41,35 +40,15 @@ const Header = (p: {
 
 const Todo = () => {
   const [userInput, setUserInput] = useState<string>("");
-  const todos = useSelector((state: TodoProps) => state.todoList);
-  const dispatch = useDispatch();
 
- 
   return (
     <>
       <div className="todo-container">
         <h2 className="title">Add Todo List</h2>
 
         <Header setText={setUserInput} text={userInput} />
-
         <div className="todo-list">
-          {todos.map((todo: TodoItenProp) => (
-            <div key={todo.id} className="todo">
-              <span
-                style={{ textDecoration: todo.isDone ? "line-through" : "" }}
-              >
-                {todo.text}
-              </span>
-              <div>
-                <button onClick={() => dispatch(updateTask({ id: todo.id }))}>
-                  ✓
-                </button>
-                <button onClick={() => dispatch(deleteTask({ id: todo.id }))}>
-                  ✕
-                </button>
-              </div>
-            </div>
-          ))}
+          <Listing />
         </div>
       </div>
     </>
