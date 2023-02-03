@@ -1,5 +1,42 @@
 @import "src/scss/lib";
 
-.todo-container{
+.todo-container {
+  border: 1px solid;
+  width: 90%;
+  margin: 3em 0;
+  padding: 5px;
+
+  .title {
+    @extend %handle-text-overflow;
+    text-align: center;
+  }
+
+  //-----header---styles----
+  .header-continer {
     display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    h3{
+        @extend %handle-text-overflow;
+    }
+
+    input {
+      padding: 8px;
+      border: 1px solid $color-input-border;
+      border-radius: 3px;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 10px #719ece;
+        border: none;
+      }
+    }
+
+    button {
+        width: 5em;
+        cursor: pointer;
+        line-height: 1.5;
+    }
+  }
 }
